@@ -29,7 +29,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install
-      working-directory: ./github-cicd-actions
+      
 
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
@@ -37,6 +37,7 @@ jobs:
         image: amitj2203/springboot-image
         tags: latest
         registry: docker.io
+        working-directory: ./github-cicd-actions
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
